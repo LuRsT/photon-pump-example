@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  eventstore:
+    image: eventstore/eventstore
+
+  event_consumer:
+    build:
+      context: event_consumer
+    depends_on:
+        eventstore:
+            condition: service_started
+
